@@ -30,12 +30,12 @@ public class FileListActivity extends AppCompatActivity {
 
         btnBack.setOnClickListener(v -> finish());
 
-        progressBar.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.VISIBLE); // 로딩 시작
 
         new Thread(() -> {
             List<FtpFileItem> items = FtpHelper.listFilesWithMetadata(FileListActivity.this);
             runOnUiThread(() -> {
-                progressBar.setVisibility(View.GONE);
+                progressBar.setVisibility(View.GONE); // 로딩 끝
                 if (items.isEmpty()) {
                     Toast.makeText(this, "Can not found file from server.", Toast.LENGTH_SHORT).show();
                 } else {
